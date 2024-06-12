@@ -21,7 +21,13 @@ public class Teste {
         return a1;
     }
 
-
+public static void mostraAluno(Aluno a1){
+    System.out.println("Nome: " + a1.nome + " " + a1.sobrenome);
+    System.out.println("eMail: " + a1.eMail);
+    System.out.println("Código: " + a1.codigo);
+    System.out.println("Média: " + a1.media(a1.notaUm, a1.notaDois));
+    System.out.println("Está " + a1.alunoaprovado(a1.media(a1.notaUm, a1.notaDois)));
+}
     public static void main(String[] args) {
         Scanner ler = new Scanner(System.in);
         Aluno[] turma = new Aluno[10];
@@ -30,7 +36,6 @@ public class Teste {
         boolean existe = false;
         int posiAluno = 0;
         String nome="", sobrenome="", eMail="";
-        int codigo=0;
 
         do {
             System.out.println("c- cadastro aluno");
@@ -42,7 +47,7 @@ public class Teste {
             if (resp == 'c') {
                 if (contAluno < turma.length) {
                     turma[contAluno] = cadastraAluno();
-                    System.out.println("Aluno " + nome + " " + sobrenome + " cadastrado obteve o código " + codigo);
+                    System.out.println("Aluno " + nome + " " + sobrenome + " cadastrado obteve o código " + turma[contAluno].codigo);
                     System.out.println("Qual é a primeira nota do Aluno " + nome + "?");
                     turma[contAluno].notaUm = ler.nextFloat();
                     System.out.println("Qual é a segunda nota?");
@@ -53,11 +58,7 @@ public class Teste {
             } else if (resp == 'l') {
                 if (contAluno < turma.length) {
                     for (int i = 0; i < contAluno; i++) {
-                        System.out.println("Nome: " + turma[i].nome + " " + turma[i].sobrenome);
-                        System.out.println("eMail: " + turma[i].eMail);
-                        System.out.println("Código: " + turma[i].codigo);
-                        System.out.println("Média: " + turma[i].media(turma[i].notaUm, turma[i].notaDois));
-                        System.out.println("Está " + turma[i].alunoaprovado(turma[i].media(turma[i].notaUm, turma[i].notaDois)));
+                        mostraAluno(turma[i]);
                         System.out.println("-------------------------------");
                     }
                 }
@@ -78,11 +79,7 @@ public class Teste {
                     }
 
                     if (existe) {
-                        System.out.println("Nome: " + turma[posiAluno].nome + " " + turma[posiAluno].sobrenome);
-                        System.out.println("Código: " + turma[
-                                posiAluno].codigo);
-                        System.out.println("Média: " + turma[posiAluno].media(turma[posiAluno].notaUm, turma[posiAluno].notaDois));
-                        System.out.println("Está " + turma[posiAluno].alunoaprovado(turma[posiAluno].media(turma[posiAluno].notaUm, turma[posiAluno].notaDois)));
+                        mostraAluno(turma[posiAluno]);
                     } else {
                         System.out.println("Não existe um aluno cadastrado com o código " + matricula);
                     }
