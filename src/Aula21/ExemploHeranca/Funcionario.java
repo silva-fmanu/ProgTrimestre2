@@ -1,10 +1,14 @@
-package Aula20.ExemploHerranca;
+package Aula21.ExemploHeranca;
 
 public class Funcionario {
     private String nome;
     private String sobrenome;
     private float salario;
-    //atrbutos privados não são herdados pelos filhos;
+
+    public Funcionario(String nome, String sobrenome) {
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+    }
 
     public String getNome() {
         return nome;
