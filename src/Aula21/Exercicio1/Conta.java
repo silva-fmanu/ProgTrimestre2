@@ -2,13 +2,13 @@ package Aula21.Exercicio1;
 
 import java.util.Random;
 
-public class Conta {
+public class    Conta {
     private String titular;
     private String identificador;
     private String senha;
     protected float saldo;
 
-    Conta(String titular, String senha) {
+    Conta(String titular, String senha, float saldo) {
         this.titular=titular;
         this.senha = senha;
         gerarIdentificador();
@@ -16,6 +16,15 @@ public class Conta {
 
     void depositar(float valor) {
         saldo+=valor;
+    }
+
+    boolean saque(float valor){
+        if(saldo>=valor){
+            saldo-=valor;
+            return true;
+        }else{
+            return false;
+        }
     }
 
     private void gerarIdentificador() {
@@ -39,5 +48,17 @@ public class Conta {
 
     boolean validaAcesso(String identificador, String senha) {
         return this.identificador.equals(identificador) && this.senha.equals(senha);
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    public void setTitular(String titular) {
+        this.titular = titular;
+    }
+
+    public String verificaSaldo() {
+        return String.format("Seu saldo é de R$%.2f", saldo);
     }
 }
